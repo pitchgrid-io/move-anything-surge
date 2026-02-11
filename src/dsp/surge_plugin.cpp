@@ -122,12 +122,6 @@ typedef struct {
  * ===================================================================== */
 
 static void plugin_log(const char *msg) {
-    /* Always write to file for debugging */
-    FILE *f = fopen("/tmp/surge_debug.log", "a");
-    if (f) {
-        fprintf(f, "[surge] %s\n", msg);
-        fclose(f);
-    }
     if (g_host && g_host->log) {
         char buf[512];
         snprintf(buf, sizeof(buf), "[surge] %s", msg);
